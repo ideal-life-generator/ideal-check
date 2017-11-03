@@ -8,15 +8,15 @@ import {
 } from './helpers/validations'
 
 describe('value validation', () => {
-  it('required valid', () => expect(check(required)('test')).toBeUndefined())
+  it('required valid', () => expect(check(required)('test')).toBeNull())
 
   it('required invalid', () => expect(check(required)()).toEqual('This field is required'))
 
-  it('minLength valid', () => expect(check(minLength(4))('test')).toBeUndefined())
+  it('minLength valid', () => expect(check(minLength(4))('test')).toBeNull())
 
   it('minLength invalid', () => expect(check(minLength(5))('test')).toEqual('Must be 5 characters or more'))
 
-  it('samePassword valid', () => expect(check(samePassword)('test', 'test')).toBeUndefined())
+  it('samePassword valid', () => expect(check(samePassword)('test', 'test')).toBeNull())
 
   it('samePassword invalid', () => expect(check(samePassword)('test', '')).toEqual('This password is different'))
 })
@@ -49,7 +49,7 @@ describe('form validation', () => {
       email: 'ideal.life.generator@gmail.com',
       password: '12345678',
       confirmPassword: '12345678',
-    })).toEqual({});
+    })).toBeNull();
   })
 
   it('invalid', () => {

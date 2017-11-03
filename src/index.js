@@ -1,33 +1,24 @@
-export default (...validations) => (value, ...options) => {
-  const { length } = validations
+export default (...checks) => (value, ...options) => {
+  const { length } = checks
 
   for (let index = 0; index < length; index += 1) {
-    const validation = validations[index]
-    const validatonResult = validation(value, ...options)
+    const check = checks[index]
+    const validatonResult = check(value, ...options)
 
     if (validatonResult) {
       return validatonResult
     }
   }
+
+  return null
 }
 
-export const checkObject = arg => (fields) => {
-  if (typeof arg === 'function') {
-    const validation = arg
+export const checkObject = check => (fields) => {
+  const checksResult = check(fields)
 
-    return validation(fields)
-  } else if (typeof arg === 'object') {
-    const validators = arg
-
-    return Object.keys(validators).reduce((container, field) => {
-      const { [field]: value } = fields
-      const { [field]: validator } = validators
-
-      if (validator) {
-        return Object.assign(container, { [field]: validator(value) })
-      }
-
-      return container
-    }, {})
+  if (Object.keys(checksResult).some(field => checksResult[field] !== null)) {
+    return checksResult;
   }
+
+  return null;
 }

@@ -26,7 +26,7 @@ const checkEmail = check(required, validEmail, maxLength(265))
 const checkPassword = check(required, minLength(8), maxLength(265))
 const checkConfirmPassword = check(required, minLength(8), maxLength(265), samePassword)
 
-checkEmail('ideal.life.generator@gmail.com') // Returning undefined
+checkEmail('ideal.life.generator@gmail.com') // Returning null
 checkEmail('ideal.life.generator') // Returning "This email is invalid"
 
 // Data validation
@@ -53,7 +53,7 @@ signupValidation({
   confirmPassword: '12345678',
 })
 
-// Returning {}
+// Returning null
 
 signupValidation({
   firstName: '',
