@@ -1,6 +1,6 @@
 {
-  "name": "ideal-validation",
-  "version": "0.0.6",
+  "name": "ideal-check",
+  "version": "0.0.0",
   "description": "Simple and flexible validation for incoming data",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -21,8 +21,8 @@
     "test:cov": "npm test -- --coverage",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
-    "build:umd": "cross-env BABEL_ENV=es NODE_ENV=development rollup -c -i src/index.js -o dist/ideal-validation.js",
-    "build:umd:min": "cross-env BABEL_ENV=es NODE_ENV=production rollup -c -i src/index.js -o dist/ideal-validation.min.js",
+    "build:umd": "cross-env BABEL_ENV=es NODE_ENV=development rollup -c -i src/index.js -o dist/ideal-check.js",
+    "build:umd:min": "cross-env BABEL_ENV=es NODE_ENV=production rollup -c -i src/index.js -o dist/ideal-check.min.js",
     "build": "npm run build:commonjs && npm run build:es && npm run build:umd && npm run build:umd:min",
     "prepare": "npm run clean && npm run lint && npm test && npm run build",
     "examples:lint": "eslint examples",
@@ -30,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ideal-life-generator/ideal-validation.git"
+    "url": "https://github.com/ideal-life-generator/ideal-check.git"
   },
   "keywords": [
     "validation",
@@ -42,9 +42,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ideal-life-generator/ideal-validation/issues"
+    "url": "https://github.com/ideal-life-generator/ideal-check/issues"
   },
-  "homepage": "https://github.com/ideal-life-generator/ideal-validation",
+  "homepage": "https://github.com/ideal-life-generator/ideal-check",
   "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -89,7 +89,7 @@
     "rollup-plugin-uglify": "^2.0.1",
     "validator": "^9.1.1"
   },
-  "npmName": "ideal-validation",
+  "npmName": "ideal-check",
   "npmFileMap": [
     {
       "basePath": "/dist/",

@@ -3,13 +3,13 @@
 ### Installation
 
 ```shell
-npm install --save ideal-validation
+npm install --save ideal-check
 ```
 
 ### Example
 
 ```js
-import check, { checkObject } from 'ideal-validation'
+import check, { checkObject } from 'ideal-check'
 import isEmail from 'validator/lib/isEmail'
 
 const required = value => !value && 'This field is required'

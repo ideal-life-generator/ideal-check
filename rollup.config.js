@@ -8,7 +8,7 @@ const env = process.env.NODE_ENV
 const config = {
   output: {
     format: 'umd',
-    name: 'ideal-validation',
+    name: 'ideal-check',
   },
   plugins: [
     nodeResolve({
