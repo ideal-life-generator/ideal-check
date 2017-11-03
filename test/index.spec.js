@@ -67,4 +67,17 @@ describe('form validation', () => {
       confirmPassword: 'This password is different',
     });
   })
+
+  it('optinal invalid', () => {
+    expect(signupValidation({
+      firstName: 'Tkachenko',
+      lastName: 'Vladislav',
+      email: 'ideal.life.generator@gmail.com',
+      password: '1234567',
+      confirmPassword: '123456789',
+    })).toEqual({
+      password: 'Must be 8 characters or more',
+      confirmPassword: 'This password is different',
+    });
+  })
 })

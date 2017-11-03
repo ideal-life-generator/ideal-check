@@ -57,7 +57,7 @@ signupValidation({
   firstName: '',
   lastName: 'V',
   email: 'ideal.life.generator',
-  password: '1234567',
+  password: '12345678',
   confirmPassword: '123456789',
 })
 
