@@ -24,7 +24,7 @@ export const checkObject = check => (fields) => {
     }
   }
 
-  if (Object.keys(checksResult).some(field => checksResult[field])) {
+  if (checksResultKeys.some(field => checksResult[field])) {
     return checksResult
   }
 
