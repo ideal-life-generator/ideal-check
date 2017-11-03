@@ -22,21 +22,27 @@ describe('value validation', () => {
 })
 
 describe('form validation', () => {
-  const firstName = check(required, minLength(2), maxLength(265))
-  const lastName = check(required, minLength(2), maxLength(265))
-  const email = check(required, validEmail, maxLength(265))
-  const password = check(required, minLength(8), maxLength(265))
-  const confirmPassword = check(required, minLength(8), maxLength(265), sameValue)
+  const checkFirstName = check(required, minLength(2), maxLength(265))
+  const checkLastName = check(required, minLength(2), maxLength(265))
+  const checkEmail = check(required, validEmail, maxLength(265))
+  const checkPassword = check(required, minLength(8), maxLength(265))
+  const checkConfirmPassword = check(required, minLength(8), maxLength(265), sameValue)
 
-  it('valid form', () => {
-    const signupValidation = createValidation(values => ({
-      firstName: firstName(values.firstName),
-      lastName: lastName(values.lastName),
-      email: email(values.email),
-      password: password(values.password),
-      confirmPassword: confirmPassword(values.password, values.confirmPassword),
-    }))
+  const signupValidation = createValidation(({
+    firstName,
+    lastName,
+    email,
+    password,
+    confirmPassword,
+  }) => ({
+    firstName: checkFirstName(firstName),
+    lastName: checkLastName(lastName),
+    email: checkEmail(email),
+    password: checkPassword(password),
+    confirmPassword: checkConfirmPassword(confirmPassword, password),
+  }))
 
+  it('valid', () => {
     expect(signupValidation({
       firstName: 'Tkachenko',
       lastName: 'Vladislav',
@@ -46,15 +52,7 @@ describe('form validation', () => {
     })).toEqual({});
   })
 
-  it('invalid form', () => {
-    const signupValidation = createValidation(values => ({
-      firstName: firstName(values.firstName),
-      lastName: lastName(values.lastName),
-      email: email(values.email),
-      password: password(values.password),
-      confirmPassword: confirmPassword(values.confirmPassword, values.password),
-    }))
-
+  it('invalid', () => {
     expect(signupValidation({
       firstName: '',
       lastName: 'V',
