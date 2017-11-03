@@ -54,7 +54,7 @@ signupValidation({
   confirmPassword: '123456789',
 })
 
-/**
+/*
   Returning {
     firstName: 'This field is required',
     lastName: 'Must be 2 characters or more',
@@ -62,4 +62,5 @@ signupValidation({
     password: 'Must be 8 characters or more',
     confirmPassword: 'Is a different password',
   }
+*/
 ```
