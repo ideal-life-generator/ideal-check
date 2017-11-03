@@ -1,4 +1,4 @@
-import is, { createValidation } from '../src/index'
+import check, { createValidation } from '../src/index'
 import {
   required,
   minLength,
@@ -8,25 +8,25 @@ import {
 } from './helpers/validations'
 
 describe('value validation', () => {
-  it('required valid', () => expect(is(required)('test')).toBeUndefined())
+  it('required valid', () => expect(check(required)('test')).toBeUndefined())
 
-  it('required invalid', () => expect(is(required)()).toEqual('This field is required'))
+  it('required invalid', () => expect(check(required)()).toEqual('This field is required'))
 
-  it('minLength valid', () => expect(is(minLength(4))('test')).toBeUndefined())
+  it('minLength valid', () => expect(check(minLength(4))('test')).toBeUndefined())
 
-  it('minLength invalid', () => expect(is(minLength(5))('test')).toEqual('Must be 5 characters or more'))
+  it('minLength invalid', () => expect(check(minLength(5))('test')).toEqual('Must be 5 characters or more'))
 
-  it('sameValue valid', () => expect(is(sameValue)('test', 'test')).toBeUndefined())
+  it('sameValue valid', () => expect(check(sameValue)('test', 'test')).toBeUndefined())
 
-  it('sameValue invalid', () => expect(is(sameValue)('test', '')).toEqual('Is a different password'))
+  it('sameValue invalid', () => expect(check(sameValue)('test', '')).toEqual('Is a different password'))
 })
 
 describe('form validation', () => {
-  const firstName = is(required, minLength(2), maxLength(265))
-  const lastName = is(required, minLength(2), maxLength(265))
-  const email = is(required, validEmail, maxLength(265))
-  const password = is(required, minLength(8), maxLength(265))
-  const confirmPassword = is(required, minLength(8), maxLength(265), sameValue)
+  const firstName = check(required, minLength(2), maxLength(265))
+  const lastName = check(required, minLength(2), maxLength(265))
+  const email = check(required, validEmail, maxLength(265))
+  const password = check(required, minLength(8), maxLength(265))
+  const confirmPassword = check(required, minLength(8), maxLength(265), sameValue)
 
   it('valid form', () => {
     const signupValidation = createValidation(values => ({

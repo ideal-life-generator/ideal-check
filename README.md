@@ -9,8 +9,8 @@ npm install --save ideal-validation
 ### Example
 
 ```
+import check, { createValidation } from 'ideal-validation'
 import isEmail from 'validator/lib/isEmail'
-import is, { createValidation } from 'ideal-validation'
 
 const required = value => !value && 'This field is required'
 const minLength = min => value => value.length < min && `Must be ${min} characters or more`
@@ -20,11 +20,14 @@ const sameValue = (value, secondValue) => value !== secondValue && 'Is a differe
 
 // Values validation
 
-const firstName = is(required, minLength(2), maxLength(265))
-const lastName = is(required, minLength(2), maxLength(265))
-const email = is(required, validEmail, maxLength(265))
-const password = is(required, minLength(8), maxLength(265))
-const confirmPassword = is(required, minLength(8), maxLength(265), sameValue)
+const firstName = check(required, minLength(2), maxLength(265))
+const lastName = check(required, minLength(2), maxLength(265))
+const email = check(required, validEmail, maxLength(265))
+const password = check(required, minLength(8), maxLength(265))
+const confirmPassword = check(required, minLength(8), maxLength(265), sameValue)
+
+email('ideal.life.generator@gmail.com') // Returning undefined
+email('ideal.life.generator') // Returning "This email is invalid"
 
 // Data validation
 
