@@ -16,7 +16,7 @@ const required = value => !value && 'This field is required'
 const minLength = min => value => value.length < min && `Must be ${min} characters or more`
 const maxLength = max => value => value.length > max && `Must be not more ${max} characters`
 const validEmail = value => !isEmail(value) && 'This email is invalid'
-const sameValue = (value, secondValue) => value !== secondValue && 'Is a different password'
+const sameValue = (value, secondValue) => value !== secondValue && 'This password is different'
 
 // Values validation
 

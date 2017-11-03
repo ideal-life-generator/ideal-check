@@ -18,7 +18,7 @@ describe('value validation', () => {
 
   it('sameValue valid', () => expect(check(sameValue)('test', 'test')).toBeUndefined())
 
-  it('sameValue invalid', () => expect(check(sameValue)('test', '')).toEqual('Is a different password'))
+  it('sameValue invalid', () => expect(check(sameValue)('test', '')).toEqual('This value is different'))
 })
 
 describe('form validation', () => {
@@ -64,7 +64,7 @@ describe('form validation', () => {
       lastName: 'Must be 2 characters or more',
       email: 'This email is invalid',
       password: 'Must be 8 characters or more',
-      confirmPassword: 'Is a different password',
+      confirmPassword: 'This password is different',
     });
   })
 })
