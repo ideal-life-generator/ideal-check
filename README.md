@@ -1,4 +1,4 @@
-# Simple and flexible validation for incoming data
+# Simple and flexible check for incoming data
 
 ### Installation
 

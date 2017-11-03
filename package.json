@@ -1,6 +1,6 @@
 {
   "name": "ideal-check",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Simple and flexible validation for incoming data",
   "main": "lib/index.js",
   "module": "es/index.js",
