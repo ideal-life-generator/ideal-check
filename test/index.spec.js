@@ -4,7 +4,7 @@ import {
   minLength,
   maxLength,
   validEmail,
-  sameValue,
+  samePassword,
 } from './helpers/validations'
 
 describe('value validation', () => {
@@ -16,9 +16,9 @@ describe('value validation', () => {
 
   it('minLength invalid', () => expect(check(minLength(5))('test')).toEqual('Must be 5 characters or more'))
 
-  it('sameValue valid', () => expect(check(sameValue)('test', 'test')).toBeUndefined())
+  it('samePassword valid', () => expect(check(samePassword)('test', 'test')).toBeUndefined())
 
-  it('sameValue invalid', () => expect(check(sameValue)('test', '')).toEqual('This value is different'))
+  it('samePassword invalid', () => expect(check(samePassword)('test', '')).toEqual('This password is different'))
 })
 
 describe('form validation', () => {
@@ -26,7 +26,7 @@ describe('form validation', () => {
   const checkLastName = check(required, minLength(2), maxLength(265))
   const checkEmail = check(required, validEmail, maxLength(265))
   const checkPassword = check(required, minLength(8), maxLength(265))
-  const checkConfirmPassword = check(required, minLength(8), maxLength(265), sameValue)
+  const checkConfirmPassword = check(required, minLength(8), maxLength(265), samePassword)
 
   const signupValidation = createValidation(({
     firstName,

@@ -16,7 +16,7 @@ const required = value => !value && 'This field is required'
 const minLength = min => value => value.length < min && `Must be ${min} characters or more`
 const maxLength = max => value => value.length > max && `Must be not more ${max} characters`
 const validEmail = value => !isEmail(value) && 'This email is invalid'
-const sameValue = (value, secondValue) => value !== secondValue && 'This password is different'
+const samePassword = (value, secondValue) => value !== secondValue && 'This password is different'
 
 // Values validation
 
@@ -24,7 +24,7 @@ const checkFirstName = check(required, minLength(2), maxLength(265))
 const checkLastName = check(required, minLength(2), maxLength(265))
 const checkEmail = check(required, validEmail, maxLength(265))
 const checkPassword = check(required, minLength(8), maxLength(265))
-const checkConfirmPassword = check(required, minLength(8), maxLength(265), sameValue)
+const checkConfirmPassword = check(required, minLength(8), maxLength(265), samePassword)
 
 checkEmail('ideal.life.generator@gmail.com') // Returning undefined
 checkEmail('ideal.life.generator') // Returning "This email is invalid"
