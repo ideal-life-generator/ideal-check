@@ -1,3 +1,5 @@
+# Simple and flexible validation for incoming data
+
 ### Installation
 
 ```
@@ -54,7 +56,7 @@ signupValidation({
 
 /**
   Returning {
-  	firstName: 'This field is required',
+    firstName: 'This field is required',
     lastName: 'Must be 2 characters or more',
     email: 'This email is invalid',
     password: 'Must be 8 characters or more',
