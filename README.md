@@ -69,7 +69,7 @@ signupValidation({
     lastName: 'Must be 2 characters or more',
     email: 'This email is invalid',
     password: 'Must be 8 characters or more',
-    confirmPassword: 'Is a different password',
+    confirmPassword: 'This password is different',
   }
 */
 ```
