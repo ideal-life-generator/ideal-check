@@ -9,7 +9,7 @@ npm install --save ideal-validation
 ### Example
 
 ```js
-import check, { createValidation } from 'ideal-validation'
+import check, { checkObject } from 'ideal-validation'
 import isEmail from 'validator/lib/isEmail'
 
 const required = value => !value && 'This field is required'
@@ -31,7 +31,7 @@ checkEmail('ideal.life.generator') // Returning "This email is invalid"
 
 // Data validation
 
-const signupValidation = createValidation(({
+const signupValidation = checkObject(({
   firstName,
   lastName,
   email,

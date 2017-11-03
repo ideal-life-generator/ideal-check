@@ -11,7 +11,7 @@ export default (...validations) => (value, ...options) => {
   }
 }
 
-export const createValidation = arg => (fields) => {
+export const checkObject = arg => (fields) => {
   if (typeof arg === 'function') {
     const validation = arg
 

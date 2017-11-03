@@ -1,4 +1,4 @@
-import check, { createValidation } from '../src/index'
+import check, { checkObject } from '../src/index'
 import {
   required,
   minLength,
@@ -28,7 +28,7 @@ describe('form validation', () => {
   const checkPassword = check(required, minLength(8), maxLength(265))
   const checkConfirmPassword = check(required, minLength(8), maxLength(265), samePassword)
 
-  const signupValidation = createValidation(({
+  const signupValidation = checkObject(({
     firstName,
     lastName,
     email,
