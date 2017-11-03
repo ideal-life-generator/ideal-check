@@ -2,13 +2,13 @@
 
 ### Installation
 
-```
+```shell
 npm install --save ideal-validation
 ```
 
 ### Example
 
-```
+```js
 import check, { createValidation } from 'ideal-validation'
 import isEmail from 'validator/lib/isEmail'
 
