@@ -1,4 +1,4 @@
-import check, { checkObject, checkArray } from '../src/index'
+import check, { checkObject } from '../src/index'
 import {
   required,
   minLength,
