@@ -1,7 +1,7 @@
 {
   "name": "ideal-check",
-  "version": "0.0.6",
-  "description": "Simple and flexible validation for incoming data",
+  "version": "0.0.7",
+  "description": "Simple and flexible check for incoming data",
   "main": "lib/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",

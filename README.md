@@ -6,7 +6,7 @@
 npm install --save ideal-check
 ```
 
-### Example
+### Usage
 
 ```js
 import check, { checkObject } from 'ideal-check'

@@ -1,4 +1,4 @@
-import check, { checkObject } from '../src/index'
+import check, { checkObject, checkArray } from '../src/index'
 import {
   required,
   minLength,
@@ -7,7 +7,7 @@ import {
   samePassword,
 } from './helpers/validations'
 
-describe('value validation', () => {
+describe('check value', () => {
   it('required valid', () => expect(check(required)('test')).toBeNull())
 
   it('required invalid', () => expect(check(required)()).toEqual('This field is required'))
@@ -21,7 +21,7 @@ describe('value validation', () => {
   it('samePassword invalid', () => expect(check(samePassword)('test', '')).toEqual('This password is different'))
 })
 
-describe('form validation', () => {
+describe('check object', () => {
   const checkFirstName = check(required, minLength(2), maxLength(265))
   const checkLastName = check(required, minLength(2), maxLength(265))
   const checkEmail = check(required, validEmail, maxLength(265))
@@ -79,5 +79,55 @@ describe('form validation', () => {
       password: 'Must be 8 characters or more',
       confirmPassword: 'This password is different',
     });
+  })
+})
+
+describe('check array', () => {
+  const checkFirstName = check(required, minLength(2), maxLength(265))
+  const checkLastName = check(required, minLength(2), maxLength(265))
+
+  const userValidation = checkObject(({
+    firstName,
+    lastName,
+  }) => ({
+    firstName: checkFirstName(firstName),
+    lastName: checkLastName(lastName),
+  }))
+
+  const usersValidation = checkArray(({
+    firstName,
+    lastName,
+  }) => userValidation({
+    firstName,
+    lastName,
+  }))
+
+  it('valid', () => {
+    expect(usersValidation([
+      {
+        firstName: 'Tkachenko',
+        lastName: 'Vladislav',
+      },
+      {
+        firstName: 'Korobkin',
+        lastName: 'Ilya',
+      },
+    ])).toBeNull()
+  })
+
+  it('invalid', () => {
+    expect(usersValidation([
+      {
+        firstName: '',
+        lastName: 'V',
+      },
+      {
+        firstName: 'Ilya',
+        lastName: 'Korobkin',
+      },
+    ])).toEqual({
+      firstName: 'This field is required',
+      lastName: 'Must be 2 characters or more',
+    })
   })
 })
